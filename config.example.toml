@@ -1,0 +1,29 @@
+# Number of seconds to wait between polling loops. Lower values will decrease notification latency
+# but may use too much CPU time.
+poll-duration-seconds = 30
+
+[telegram]
+# Number that uniquely identifies your Telegram account. You must set it so that nobody else can
+# access the notifications from this bot. To get your user ID, open a conversation with @JsonDumpBot
+# and copy the number at `message.from.id`.
+user-id = 123456789
+# Hostname of the NAS server where NAS Notifier is running. The purpose of this field is to provide
+# context in notifications, so it doesn't actually have to be the same as the server's hostname.
+hostname = "CHANGE ME"
+# API key for the bot that you created in order to run NAS Notifier.
+api-key = "CHANGE ME"
+
+[notifications]
+# Send a notification when a user successfully logs in from an external IP address that isn't in the
+# `known-ips` list. IP addresses on private networks are always ignored.
+new-login-ip = true
+# External IP addresses for which successful logins do not trigger a notification. IP addresses on
+# private networks are always ignored. An empty list means that all external IP addresses will
+# trigger notifications. Only has an effect if `new-login-ip` is set to `true`. CIDR ranges are not
+# supported.
+known-ips = ["12.34.56.78"]
+# Send a notification when a user fails to authenticate during login. This may indicate that someone
+# is trying to gain access to the server maliciously.
+failed-login = true
+# Send a notification when any zpool changes its health status.
+pool-health = true
